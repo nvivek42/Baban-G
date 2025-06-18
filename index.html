@@ -6,8 +6,718 @@
     <title>Shree Cleaning & Housekeeping Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ... All styles remain the same as your reference code ... */
-        /* (Omitted here for brevity, but keep your original <style> block unchanged) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: var(--bg-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 8rem 1rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,0 1000,100 0,80"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+            background: var(--bg-light);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 1rem;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: var(--bg-light);
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .info-card li:hover {
+            background: #e0f2fe;
+        }
+
+        .info-card i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--bg-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .gallery-overlay p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .experience {
+            background: var(--bg-white);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 50%;
+            padding-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-content {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -3rem;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .timeline-content .date {
+            color: var(--warning-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--bg-light);
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .review-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .review-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .review-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+
+        .review-form input:focus,
+        .review-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .review-form button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .review-form button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-white);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: var(--bg-white);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-white);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 3rem;
+                padding-right: 1rem;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -3rem;
+                right: auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-content {
+                padding: 0 0.5rem;
+            }
+
+            section {
+                padding: 3rem 0.5rem;
+            }
+
+            .info-card,
+            .timeline-content,
+            .review-card,
+            .review-form {
+                padding: 1.5rem;
+            }
+
+            .hero {
+                padding: 5rem 0.5rem 2rem;
+            }
+
+            .profile-img {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -42,96 +752,106 @@
     </section>
 
     <section id="about" class="about">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <div class="info-card">
-                <h3><i class="fas fa-users"></i> Who We Are</h3>
-                <ul>
-                    <li><i class="fas fa-calendar"></i> <span>In Business: 5+ Years</span></li>
-                    <li><i class="fas fa-map-marker-alt"></i> <span>Serving: Pune, Maharashtra</span></li>
-                    <li><i class="fas fa-handshake"></i> <span>Trusted by 100+ clients</span></li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h3><i class="fas fa-cogs"></i> Our Values</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                    <span class="skill-tag">Reliability</span>
-                    <span class="skill-tag">Professionalism</span>
-                    <span class="skill-tag">Attention to Detail</span>
-                    <span class="skill-tag">Trustworthy Staff</span>
-                    <span class="skill-tag">Customer Satisfaction</span>
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="info-card">
+                    <h3><i class="fas fa-users"></i> Who We Are</h3>
+                    <ul>
+                        <li><i class="fas fa-calendar"></i> <span>In Business: 5+ Years</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Serving: Pune, Maharashtra</span></li>
+                        <li><i class="fas fa-handshake"></i> <span>Trusted by 100+ clients</span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-cogs"></i> Our Values</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span class="skill-tag">Reliability</span>
+                        <span class="skill-tag">Professionalism</span>
+                        <span class="skill-tag">Attention to Detail</span>
+                        <span class="skill-tag">Trustworthy Staff</span>
+                        <span class="skill-tag">Customer Satisfaction</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="gallery" class="gallery">
-        <h2>Our Work Gallery</h2>
-        <div class="gallery-grid" id="workGallery">
-            <!-- Images will be added dynamically via JavaScript -->
+        <div class="container">
+            <h2>Our Work Gallery</h2>
+            <div class="gallery-grid" id="workGallery">
+                <!-- Images will be added dynamically via JavaScript -->
+            </div>
         </div>
     </section>
 
     <section id="services" class="experience">
-        <h2>Our Services</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Residential Cleaning</h3>
-                    <p class="date">Homes & Apartments</p>
-                    <p>Deep cleaning, regular housekeeping, kitchen & bathroom sanitization, floor and upholstery cleaning for homes of all sizes.</p>
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Residential Cleaning</h3>
+                        <p class="date">Homes & Apartments</p>
+                        <p>Deep cleaning, regular housekeeping, kitchen & bathroom sanitization, floor and upholstery cleaning for homes of all sizes.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Office & Commercial Cleaning</h3>
-                    <p class="date">Small & Large Offices</p>
-                    <p>Comprehensive office cleaning, dusting, waste disposal, pantry management, and reception area upkeep for workspaces.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Office & Commercial Cleaning</h3>
+                        <p class="date">Small & Large Offices</p>
+                        <p>Comprehensive office cleaning, dusting, waste disposal, pantry management, and reception area upkeep for workspaces.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Specialized Services</h3>
-                    <p class="date">On Demand</p>
-                    <p>Floor polishing, glass & window cleaning, event clean-up, deep sanitization, and other custom cleaning services.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Specialized Services</h3>
+                        <p class="date">On Demand</p>
+                        <p>Floor polishing, glass & window cleaning, event clean-up, deep sanitization, and other custom cleaning services.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="reviews" class="reviews">
-        <h2>Client Reviews</h2>
-        <div class="reviews-container" id="reviewsContainer">
-            <!-- Reviews will be added dynamically via JavaScript -->
-        </div>
-        <div class="review-form">
-            <h3>Add Your Review</h3>
-            <form id="addReviewForm">
-                <input type="text" id="reviewerName" placeholder="Your Name" required>
-                <textarea id="reviewText" placeholder="Share your experience with our services..." rows="4" required></textarea>
-                <button type="submit"><i class="fas fa-paper-plane"></i> Submit Review</button>
-            </form>
+        <div class="container">
+            <h2>Client Reviews</h2>
+            <div class="reviews-container" id="reviewsContainer">
+                <!-- Reviews will be added dynamically via JavaScript -->
+            </div>
+            <div class="review-form">
+                <h3>Add Your Review</h3>
+                <form id="addReviewForm">
+                    <input type="text" id="reviewerName" placeholder="Your Name" required>
+                    <textarea id="reviewText" placeholder="Share your experience with our services..." rows="4" required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Submit Review</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <p>+91 9876543210</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <p>shreecleaning@gmail.com</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p>Pune, Maharashtra</p>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-whatsapp"></i>
-                <p>WhatsApp Available</p>
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+91 9876543210</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>shreecleaning@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Pune, Maharashtra</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <p>WhatsApp Available</p>
+                </div>
             </div>
         </div>
     </section>
@@ -141,7 +861,7 @@
     </footer>
 
     <script>
-        // Work Gallery Data - Replace src with actual image links or local images
+        // Work Gallery Data
         const workImages = [
             { src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', alt: 'Home Cleaning', title: 'Home Cleaning', desc: 'Spotless home and kitchen cleaning.' },
             { src: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80', alt: 'Office Cleaning', title: 'Office Cleaning', desc: 'Professional office workspace cleaning.' },
@@ -159,9 +879,9 @@
                 div.style.animationDelay = `${index * 0.1}s`;
                 div.innerHTML = `
                     <img src="${item.src}" alt="${item.alt}" title="${item.title}" />
-                    <div style="position:absolute; bottom:0; left:0; right:0; background:rgba(65,65,65,0.65); color:#fff; padding:0.5rem 1rem;">
-                        <h3 style="margin:0; font-size:1.1rem;">${item.title}</h3>
-                        <p style="margin:0; font-size:0.95rem;">${item.desc}</p>
+                    <div class="gallery-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
                     </div>
                 `;
                 gallery.appendChild(div);
@@ -225,7 +945,7 @@
                 const button = this.querySelector('button');
                 const originalText = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-check"></i> Review Added!';
-                button.style.background = '#28a745';
+                button.style.background = '#10b981';
                 
                 setTimeout(() => {
                     button.innerHTML = originalText;
@@ -291,9 +1011,34 @@
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
                 nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = 'var(--shadow-md)';
             } else {
                 nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'var(--shadow-sm)';
             }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Add loading animation to images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+            });
         });
     </script>
 </body>
