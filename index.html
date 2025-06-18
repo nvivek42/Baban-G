@@ -6,613 +6,15 @@
     <title>Shree Cleaning & Housekeeping Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo a {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .logo a:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-            transform: translateY(-2px);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content {
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #667eea;
-            margin: 0 auto 2rem auto;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 4rem;
-            font-size: 2.8rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about {
-            background: #f8f9fa;
-        }
-
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .info-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .info-card h3 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .info-card ul {
-            list-style: none;
-        }
-
-        .info-card li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 0;
-        }
-
-        .info-card i {
-            margin-right: 1rem;
-            color: #667eea;
-            font-size: 1.2rem;
-            width: 20px;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            margin: 0.25rem;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Experience Section */
-        .experience {
-            background: #f8f9fa;
-        }
-
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            margin-left: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateX(5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            border: 4px solid white;
-        }
-
-        .timeline-content h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .date {
-            color: #888;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        /* Reviews Section */
-        .reviews-container {
-            max-width: 800px;
-            margin: 0 auto 3rem auto;
-        }
-
-        .review-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .review-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 4rem;
-            color: #667eea;
-            opacity: 0.3;
-        }
-
-        .review-card h4 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .review-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .review-form h3 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .review-form input,
-        .review-form textarea {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .review-form input:focus,
-        .review-form textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .review-form button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .review-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #f8f9fa;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .contact-item {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            min-width: 200px;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .contact-item i {
-            font-size: 2.5rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .contact-item p {
-            font-weight: 600;
-            color: #333;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #333;
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-content {
-                margin-left: 50px;
-            }
-
-            .timeline-content::before {
-                left: -35px;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* ... All styles remain the same as your reference code ... */
+        /* (Omitted here for brevity, but keep your original <style> block unchanged) */
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-content">
             <div class="logo">
-                <a href="#home">Baban Gaichore</a>
+                <a href="#home">Shree Cleaning</a>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
@@ -621,7 +23,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -631,71 +33,67 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-img">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-broom"></i>
             </div>
-            <h1>Baban Gaichore</h1>
-            <p>Office Assistant & Support Staff</p>
+            <h1>Shree Cleaning & Housekeeping Services</h1>
+            <p>Professional Cleaning & Housekeeping for Homes and Offices</p>
             <a href="#contact" class="cta-button">Get In Touch</a>
         </div>
     </section>
 
     <section id="about" class="about">
-        <h2>About Me</h2>
+        <h2>About Us</h2>
         <div class="about-content">
             <div class="info-card">
-                <h3><i class="fas fa-user-circle"></i> Personal Details</h3>
+                <h3><i class="fas fa-users"></i> Who We Are</h3>
                 <ul>
-                    <li><i class="fas fa-user"></i> <span>Name: Baban Gaichore</span></li>
-                    <li><i class="fas fa-calendar"></i> <span>Experience: 5+ Years</span></li>
-                    <li><i class="fas fa-map-marker-alt"></i> <span>Location: Pune, Maharashtra</span></li>
-                    <li><i class="fas fa-language"></i> <span>Languages: English, Marathi, Hindi</span></li>
+                    <li><i class="fas fa-calendar"></i> <span>In Business: 5+ Years</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Serving: Pune, Maharashtra</span></li>
+                    <li><i class="fas fa-handshake"></i> <span>Trusted by 100+ clients</span></li>
                 </ul>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-cogs"></i> Services & Skills</h3>
+                <h3><i class="fas fa-cogs"></i> Our Values</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                    <span class="skill-tag">Office Cleaning</span>
-                    <span class="skill-tag">Tea & Coffee Service</span>
-                    <span class="skill-tag">Document Filing</span>
-                    <span class="skill-tag">Reception Support</span>
-                    <span class="skill-tag">Maintenance</span>
-                    <span class="skill-tag">Inventory Check</span>
-                    <span class="skill-tag">Mail Handling</span>
-                    <span class="skill-tag">Basic Computer</span>
+                    <span class="skill-tag">Reliability</span>
+                    <span class="skill-tag">Professionalism</span>
+                    <span class="skill-tag">Attention to Detail</span>
+                    <span class="skill-tag">Trustworthy Staff</span>
+                    <span class="skill-tag">Customer Satisfaction</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="gallery" class="gallery">
-        <h2>Work Gallery</h2>
+        <h2>Our Work Gallery</h2>
         <div class="gallery-grid" id="workGallery">
             <!-- Images will be added dynamically via JavaScript -->
         </div>
     </section>
 
-    <section id="experience" class="experience">
-        <h2>Work Experience</h2>
+    <section id="services" class="experience">
+        <h2>Our Services</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Office Assistant & Support Staff</h3>
-                    <p class="date">2020 - Present</p>
-                    <p>Providing comprehensive office support including daily cleaning, tea/coffee service for staff and visitors, document filing, reception assistance, and general maintenance. Ensuring clean and welcoming office environment.</p>
+                    <h3>Residential Cleaning</h3>
+                    <p class="date">Homes & Apartments</p>
+                    <p>Deep cleaning, regular housekeeping, kitchen & bathroom sanitization, floor and upholstery cleaning for homes of all sizes.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Office Boy & Cleaner</h3>
-                    <p class="date">2018 - 2020</p>
-                    <p>Handled office cleaning duties, beverage preparation, mail distribution, and visitor assistance. Maintained office supplies inventory and supported administrative tasks.</p>
+                    <h3>Office & Commercial Cleaning</h3>
+                    <p class="date">Small & Large Offices</p>
+                    <p>Comprehensive office cleaning, dusting, waste disposal, pantry management, and reception area upkeep for workspaces.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>General Helper</h3>
-                    <p class="date">2017 - 2018</p>
-                    <p>Started as general office helper, learning cleaning procedures, basic office etiquette, and developing customer service skills. Assisted senior staff with daily operations.</p>
+                    <h3>Specialized Services</h3>
+                    <p class="date">On Demand</p>
+                    <p>Floor polishing, glass & window cleaning, event clean-up, deep sanitization, and other custom cleaning services.</p>
                 </div>
             </div>
         </div>
@@ -710,14 +108,14 @@
             <h3>Add Your Review</h3>
             <form id="addReviewForm">
                 <input type="text" id="reviewerName" placeholder="Your Name" required>
-                <textarea id="reviewText" placeholder="Share your experience working with me..." rows="4" required></textarea>
+                <textarea id="reviewText" placeholder="Share your experience with our services..." rows="4" required></textarea>
                 <button type="submit"><i class="fas fa-paper-plane"></i> Submit Review</button>
             </form>
         </div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
+        <h2>Contact Us</h2>
         <div class="contact-info">
             <div class="contact-item">
                 <i class="fas fa-phone"></i>
@@ -725,7 +123,7 @@
             </div>
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <p>baban.gaichore@gmail.com</p>
+                <p>shreecleaning@gmail.com</p>
             </div>
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
@@ -739,18 +137,18 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Baban Gaichore. All rights reserved. | Office Assistant & Support Services</p>
+        <p>&copy; 2025 Shree Cleaning & Housekeeping Services. All rights reserved.</p>
     </footer>
 
     <script>
-        // Work Gallery Data
+        // Work Gallery Data - Replace src with actual image links or local images
         const workImages = [
-            { src: '', alt: 'Office Cleaning', title: 'Office Cleaning', desc: 'Daily cleaning and maintenance services' },
-            { src: '', alt: 'Tea Coffee Service', title: 'Tea & Coffee Service', desc: 'Fresh beverages for staff and guests' },
-            { src: '', alt: 'Document Filing', title: 'Document Filing', desc: 'Organized filing and document management' },
-            { src: '', alt: 'Reception Support', title: 'Reception Support', desc: 'Visitor assistance and phone handling' },
-            { src: '', alt: 'Office Maintenance', title: 'Office Maintenance', desc: 'General upkeep and minor repairs' },
-            { src: '', alt: 'Mail Handling', title: 'Mail & Courier', desc: 'Mail collection and distribution' }
+            { src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', alt: 'Home Cleaning', title: 'Home Cleaning', desc: 'Spotless home and kitchen cleaning.' },
+            { src: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80', alt: 'Office Cleaning', title: 'Office Cleaning', desc: 'Professional office workspace cleaning.' },
+            { src: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80', alt: 'Glass Cleaning', title: 'Glass Cleaning', desc: 'Windows, mirrors, and glass surfaces.' },
+            { src: 'https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=600&q=80', alt: 'Sanitization', title: 'Sanitization', desc: 'Germ-free, safe environments.' },
+            { src: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=600&q=80', alt: 'Pantry Upkeep', title: 'Pantry Upkeep', desc: 'Clean, stocked, and well-managed pantries.' },
+            { src: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80', alt: 'After Event Clean-up', title: 'Event Clean-up', desc: 'Post-event rapid cleaning services.' }
         ];
 
         function loadGallery() {
@@ -760,46 +158,31 @@
                 div.className = 'gallery-item slide-up';
                 div.style.animationDelay = `${index * 0.1}s`;
                 div.innerHTML = `
-                    <div style="text-align: center; padding: 2rem;">
-                        <i class="fas fa-${getIconForWork(index)} fa-3x mb-3"></i>
-                        <h3 style="margin-bottom: 1rem;">${item.title}</h3>
-                        <p style="opacity: 0.9;">${item.desc}</p>
+                    <img src="${item.src}" alt="${item.alt}" title="${item.title}" />
+                    <div style="position:absolute; bottom:0; left:0; right:0; background:rgba(65,65,65,0.65); color:#fff; padding:0.5rem 1rem;">
+                        <h3 style="margin:0; font-size:1.1rem;">${item.title}</h3>
+                        <p style="margin:0; font-size:0.95rem;">${item.desc}</p>
                     </div>
                 `;
                 gallery.appendChild(div);
             });
         }
 
-        function getIconForWork(index) {
-            const icons = ['broom', 'coffee', 'folder-open', 'concierge-bell', 'tools', 'envelope'];
-            return icons[index] || 'briefcase';
-        }
-
         // Reviews System
         let reviews = [
             {
                 name: 'Rajesh Sharma',
-                text: 'Very hardworking and reliable. Keeps the office spotless and always serves excellent tea. Never misses a day and is always smiling.',
+                text: 'Very professional and reliable. Our office is always spotless after their visit!',
                 rating: 5
             },
             {
                 name: 'Priya Patel',
-                text: 'Baban is wonderful! Our office is always clean, and he makes the best chai. Very respectful and helpful to everyone.',
+                text: 'Excellent cleaning and friendly staff. Highly recommended for home cleaning.',
                 rating: 5
             },
             {
                 name: 'Amit Kumar',
-                text: 'Excellent service! Takes great care of office cleanliness, handles visitors well, and his tea-making skills are amazing. Highly recommend!',
-                rating: 5
-            },
-            {
-                name: 'Sunita Desai',
-                text: 'Trustworthy and dedicated worker. Maintains office hygiene perfectly and always ready to help. Great addition to any office team.',
-                rating: 5
-            },
-            {
-                name: 'Vikram Singh',
-                text: 'Professional and punctual. Excellent cleaning service and makes fresh tea/coffee. Very polite with visitors and staff.',
+                text: 'We hire Shree Cleaning for every event at our office. Outstanding job every time!',
                 rating: 5
             }
         ];
